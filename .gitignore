@@ -94,6 +94,10 @@ ENV/
 env.bak/
 venv.bak/
 backend/.env
+.env.local
+.env.*.local
+frontend/.env.local
+
 
 # PEP 582
 __pypackages__/
