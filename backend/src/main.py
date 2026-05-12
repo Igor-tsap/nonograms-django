@@ -2,9 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 from database.core import engine, Base
-from puzzles.model import Puzzles
-from users.model import Users
-from attempts.model import Attempts
 from puzzles.controller import router as puzzles_router
 from users.controller import router as users_router
 from attempts.controller import router as attempts_router
