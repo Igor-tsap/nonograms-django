@@ -63,7 +63,7 @@ export default function PuzzlesPage() {
   return (
     <div className="max-w-6xl mx-auto px-6 py-10">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Puzzles</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Puzzles1234</h1>
         <div className="flex flex-wrap items-center gap-3">
           <div className="flex gap-1.5">
             {["", "easy", "medium", "hard"].map((d) => (
