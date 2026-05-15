@@ -5,6 +5,7 @@ from database.core import engine, Base
 from puzzles.controller import router as puzzles_router
 from users.controller import router as users_router
 from attempts.controller import router as attempts_router
+from chat.controller import router as chat_router
 
 
 
@@ -16,7 +17,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Nonograms API", lifespan=lifespan)
 
-# Configure CORS
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000", "http://localhost:3001"],  # Next.js dev/prod ports
@@ -28,7 +29,7 @@ app.add_middleware(
 app.include_router(puzzles_router)
 app.include_router(users_router)
 app.include_router(attempts_router)
-
+app.include_router(chat_router)
 
 
 @app.get("/")
