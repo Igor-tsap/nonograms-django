@@ -64,7 +64,7 @@ export default function CreatePuzzlePage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
+    <div className="h-full w-full overflow-y-auto px-6 py-10">
       <h1 className="text-3xl font-bold tracking-tight mb-8">Create Puzzle</h1>
 
       <div className="space-y-6 mb-8">

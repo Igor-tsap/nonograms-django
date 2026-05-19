@@ -41,9 +41,9 @@ export function ChatWindow({ currentUsername }: ChatWindowProps) {
   };
 
   return (
-    <aside className="flex flex-col w-72 h-full border-l border-stone-200 bg-white">
+    <aside className="w-72 flex-none flex flex-col border-l border-stone-200 bg-white">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 border-b border-stone-200">
+      <div className="flex-none p-3 border-b border-stone-200">
         <h2 className="text-sm font-semibold text-stone-700 tracking-wide uppercase">
           Chat
         </h2>
@@ -58,7 +58,7 @@ export function ChatWindow({ currentUsername }: ChatWindowProps) {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-3">
+      <div className="flex-1 overflow-y-auto px-3 py-2 flex flex-col gap-0.5">
         {messages.length === 0 && status === "connected" && (
           <p className="text-xs text-stone-400 text-center mt-8">
             No messages yet. Say hello!
@@ -76,7 +76,7 @@ export function ChatWindow({ currentUsername }: ChatWindowProps) {
       </div>
 
       {/* Input */}
-      <div className="px-3 py-3 border-t border-stone-200">
+      <div className="flex-none p-3 border-t border-stone-200">
         <div className="flex items-center gap-2 bg-stone-100 rounded-xl px-3 py-2">
           <input
             type="text"

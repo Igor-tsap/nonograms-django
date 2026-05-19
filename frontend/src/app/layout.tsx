@@ -13,11 +13,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={mono.variable}>
-      <body className="bg-white text-black min-h-screen antialiased">
+    <html lang="en" className="h-full">
+      <body className="h-full antialiased overflow-hidden bg-white">
         <AuthProvider>
-          <Navbar />
-          <main className="pt-14">{children}</main>
+          {/* Main Wrapper */}
+          <div className="flex flex-col h-full">
+            
+            {/* Navbar: flex-none prevents it from shrinking to 0px */}
+            <nav className="flex-none h-14 bg-white border-b border-gray-200 z-50">
+              <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+                <Navbar />
+              </div>
+            </nav>
+
+            {/* Main Area: flex-1 takes up all space under the navbar */}
+            <main className="flex-1 flex overflow-hidden">
+              {children}
+            </main>
+            
+          </div>
         </AuthProvider>
       </body>
     </html>

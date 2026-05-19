@@ -58,6 +58,9 @@ export default function PuzzlePage() {
           setAttempt(newAttempt);
           setGrid(newAttempt.current_grid);
         }
+      } else {
+        // If no user, initialize a blank grid based on puzzle dimensions
+        setGrid(Array.from({ length: p.ver_size }, () => Array(p.hor_size).fill(0)));
       }
       setLoading(false);
     };
@@ -65,7 +68,7 @@ export default function PuzzlePage() {
   }, [id, user]);
 
   const handleMouseDown = (r: number, c: number, e: React.MouseEvent) => {
-    if (!attempt || solved) return;
+    if (!puzzle || solved) return;
     let newVal: number;
     if (e.button === 0) {
       newVal = grid[r][c] === 1 ? 0 : 1;
@@ -82,7 +85,7 @@ export default function PuzzlePage() {
   };
 
   const handleMouseEnter = (r: number, c: number) => {
-    if (painting === null || !attempt || solved) return;
+    if (painting === null || !puzzle || solved) return;
     const newGrid = grid.map((row, ri) =>
       row.map((cell, ci) => (ri === r && ci === c ? painting : cell))
     );
@@ -90,14 +93,16 @@ export default function PuzzlePage() {
   };
 
   const stopPainting = useCallback(async () => {
-    if (painting === null || !attempt || solved) return;
+    if (painting === null || !puzzle || solved) return;
     setPainting(null);
-    const updated = await updateAttempt(attempt.id, grid);
-    if (updated.status === "completed") {
-      setSolved(true);
-      setGrid(updated.current_grid);
+    if (user && attempt) {
+      const updated = await updateAttempt(attempt.id, grid);
+      if (updated.status === "completed") {
+        setSolved(true);
+        setGrid(updated.current_grid);
+      }
     }
-  }, [grid, attempt, solved, painting]);
+  }, [grid, attempt, solved, painting, user, puzzle]);
 
   if (loading) return <div className="text-center py-20 text-gray-500">Loading...</div>;
   if (!puzzle) return <div className="text-center py-20 text-gray-500">Puzzle not found</div>;
@@ -108,10 +113,10 @@ export default function PuzzlePage() {
   
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-full w-full">
       {/* Puzzle area */}
-      <div className="flex-1 overflow-auto px-6 py-10">
-        <div className="max-w-6xl mx-auto">
+      <section className="flex-1 overflow-auto px-8">
+        <div className="py-10">
           <div className="mb-8">
             <h1 className="text-3xl font-bold tracking-tight mb-1">{puzzle.title}</h1>
             <p className="text-gray-600 text-sm">
@@ -222,7 +227,7 @@ export default function PuzzlePage() {
             </table>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Chat sidebar */}
       {/* <ChatProvider roomId={String(id)}>
