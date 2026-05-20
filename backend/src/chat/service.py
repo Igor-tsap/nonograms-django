@@ -6,10 +6,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, desc
 from .model import ChatMessage as ChatMessageModel
 from .schema import ChatMessageCreate
+from database.redis import redis
 
 
+async def publish_chat_message(room_id: str, message: str):
+    await redis.publish(f"puzzle_{room_id}", message)
 async def get_username_from_token( db: AsyncSession, token: Optional[str]) -> str:
-    print(f"[auth] token received: {token}")
     if token is None:
         return "Anonymous"
     try:
