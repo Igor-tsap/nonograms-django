@@ -119,12 +119,12 @@ export default function PuzzlesPage() {
                     <h2 className="font-semibold text-black group-hover:text-gray-800">{puzzle.title}</h2>
                     <div 
                       className="grid shrink-0 border border-gray-100 bg-white shadow-sm overflow-hidden"
-                      style={{ gridTemplateColumns: `repeat(${puzzle.hor_size}, 4px)` }}
+                      style={{ gridTemplateColumns: `repeat(${puzzle.hor_size}, 2px)` }}
                     >
                       {displayGrid.flat().map((cell, i) => (
                         <div 
                           key={i} 
-                          className={`w-[4px] h-[4px] ${cell === 1 ? 'bg-black' : 'bg-transparent'}`} 
+                          className={`w-[2px] h-[2px] ${cell === 1 ? 'bg-black' : 'bg-transparent'}`} 
                         />
                       ))}
                     </div>

@@ -160,7 +160,7 @@ export default function PuzzlePage() {
                             else newSet.add(clueKey);
                             setCompletedColClues(newSet);
                           }}
-                          className={`w-8 h-8 text-xs cursor-pointer select-none transition-colors hover:bg-gray-100 ${
+                          className={`w-4 h-4 text-xs cursor-pointer select-none transition-colors hover:bg-gray-100 ${
                             isCompleted ? "line-through text-gray-300" : "text-gray-600 font-bold"
                           } ${clue[clueIndex] !== undefined ? "border border-gray-300" : ""}`}
                         >
@@ -177,7 +177,7 @@ export default function PuzzlePage() {
                 {grid.map((row, ri) => (
                   <tr key={ri}>
                     {Array.from({ length: maxRowClue - puzzle.row_clues[ri].length }).map((_, i) => (
-                      <td key={`empty-${ri}-${i}`} className="w-8 h-8" />
+                      <td key={`empty-${ri}-${i}`} className="w-4 h-4" />
                     ))}
                     {puzzle.row_clues[ri].map((n, i) => {
                       const clueKey = `row-${ri}-${i}`;
@@ -191,7 +191,7 @@ export default function PuzzlePage() {
                             else newSet.add(clueKey);
                             setCompletedRowClues(newSet);
                           }}
-                          className={`w-8 h-8 text-xs cursor-pointer select-none transition-colors hover:bg-gray-100 ${
+                          className={`w-4 h-4 text-xs cursor-pointer select-none transition-colors hover:bg-gray-100 ${
                             isCompleted ? "line-through text-gray-300" : "text-gray-600 font-bold"
                           } ${n ? "border border-gray-300" : ""}`}
                         >
@@ -207,7 +207,7 @@ export default function PuzzlePage() {
                         onMouseDown={(e) => handleMouseDown(ri, ci, e)}
                         onMouseEnter={() => handleMouseEnter(ri, ci)}
                         className={`
-                          w-8 h-8 border border-gray-500
+                          w-4 h-4 border border-gray-500
                           cursor-pointer transition-colors select-none relative
                           ${cell === 1 ? "bg-black" : "bg-white hover:bg-gray-50"}
                           ${ci % 5 === 0 ? "border-l-2 border-l-zinc-500" : ""}
@@ -216,7 +216,7 @@ export default function PuzzlePage() {
                       >
                         {cell === 2 && (
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full" />
+                            <div className="w-1 h-1 bg-gray-400 rounded-full" />
                           </div>
                         )}
                       </td>

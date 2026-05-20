@@ -110,7 +110,7 @@ export default function CreatePuzzlePage() {
                 key={ci}
                 onMouseDown={() => handleMouseDown(ri, ci)}
                 onMouseEnter={() => handleMouseEnter(ri, ci)}
-                className={`w-8 h-8 border cursor-pointer transition-colors ${
+                className={`w-4 h-4 border cursor-pointer transition-colors ${
                   cell === 1 ? "bg-black border-gray-500" : "bg-white border-gray-300 hover:bg-gray-50"
                 } ${ci % 5 === 0 ? "border-l-zinc-500" : ""} ${ri % 5 === 0 ? "border-t-zinc-500" : ""}`}
               />
