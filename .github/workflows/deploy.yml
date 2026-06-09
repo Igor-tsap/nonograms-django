@@ -36,10 +36,6 @@ jobs:
             NEXT_PUBLIC_WS_URL=ws://${{ secrets.SERVER_IP }}:8000
             EOF
 
-            sed -i "s/MYSQL_ROOT_PASSWORD: .*/MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}/" docker-compose.yml
-            sed -i "s/MYSQL_PASSWORD: .*/MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}/" docker-compose.yml
-            sed -i "s/MYSQL_DATABASE: .*/MYSQL_DATABASE: nonograms/" docker-compose.yml
-            sed -i "s/MYSQL_USER: .*/MYSQL_USER: appuser/" docker-compose.yml
 
             docker compose build --no-cache
             docker compose up -d
