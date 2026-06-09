@@ -119,14 +119,8 @@ export async function updateAttempt(id: number, current_grid: number[][]) {
     body: JSON.stringify({ current_grid }),
   });
   if (!res.ok) {
-    let detail = "Failed to update attempt";
-    try {
-      const errorData = await res.json();
-      detail = errorData.detail ?? detail;
-    } catch {
-      // Ignore JSON parse errors
-    }
+    const errorData = await res.json().catch(() => ({}));
+    throw new Error(errorData.detail ?? "Failed to update attempt");
   }
-  throw new Error((await res.json()).detail);
   return res.json();
 }
