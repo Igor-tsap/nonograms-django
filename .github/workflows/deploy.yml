@@ -18,7 +18,11 @@ jobs:
           command_timeout: 30m
           script: |
             cd ~/nonograms
-            git pull origin main
+            # 1. Fetch the latest changes from GitHub without merging
+            git fetch origin main
+            
+            # 2. FORCE the local files to exactly match the GitHub main branch
+            git reset --hard origin/main
             
             # write backend .env
             cat > backend/.env << EOF
