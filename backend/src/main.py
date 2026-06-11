@@ -6,6 +6,9 @@ from puzzles.controller import router as puzzles_router
 from users.controller import router as users_router
 from attempts.controller import router as attempts_router
 from chat.controller import router as chat_router
+from prometheus_fastapi_instrumentator import Instrumentator
+
+
 
 
 
@@ -26,6 +29,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+Instrumentator().instrument(app).expose(app)
 
 app.include_router(puzzles_router)
 app.include_router(users_router)

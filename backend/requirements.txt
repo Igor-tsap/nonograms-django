@@ -12,3 +12,5 @@ alembic==1.18.4
 websockets==11.0.3
 redis[asyncio]==4.5.1
 httpx
+prometheus-client==0.25.0
+prometheus-fastapi-instrumentator==8.0.0
