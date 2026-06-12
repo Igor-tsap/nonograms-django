@@ -87,15 +87,18 @@ services:
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /sys:/sys:ro
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/lib/docker/:/var/lib/docker:ro
+
     ports:
       - "8080:8080"
     command:
       - '--global_housekeeping_interval=30s'
       - '--housekeeping_interval=15s'
       - '--disable_metrics=disk,tcp,udp,percpu,sched'
+      - '--docker_only=true'
 
 volumes:
   mysql_data:
